@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ChambreController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -22,5 +23,8 @@ Route::view('dashboard', 'dashboard')
 Route::view('profile', 'profile')
     ->middleware(['auth'])
     ->name('profile');
+
+Route::resource("/chambre", ChambreController::class)->middleware('auth'); 
+
 
 require __DIR__.'/auth.php';
