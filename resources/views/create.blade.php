@@ -32,7 +32,7 @@
         <select name="statut" id="statut" class="form-control">
             <option value="">Selectionner</option>
             <option value="disponible">Disponible</option>
-            <option value="non_disponible">Non disponible</option>
+            <option value="non disponible">Non disponible</option>
         </select> <br>
         <input type="submit" value="Sauvegarder" class="btn btn-success"></br>
     </form>

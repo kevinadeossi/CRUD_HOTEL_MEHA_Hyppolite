@@ -24,7 +24,15 @@ Route::view('profile', 'profile')
     ->middleware(['auth'])
     ->name('profile');
 
-Route::resource("/chambre", ChambreController::class)->middleware('auth'); 
+
+Route::resource("/chambre", ChambreController::class)->middleware('auth');
+
+Route::middleware(['checkRoomCount'])->group(function () {
+    Route::get('/supprimer-chambre', 'ChambreController@supprimer');
+});
+
+
+ 
 
 
 require __DIR__.'/auth.php';

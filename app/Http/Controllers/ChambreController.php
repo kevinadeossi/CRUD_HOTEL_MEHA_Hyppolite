@@ -46,24 +46,26 @@ class ChambreController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Chambre $chambre)
+    public function edit(string $id): View
     {
-        //
+        $chambre = Chambre::find($id);
+        return view('.edit')->with('chambres', $chambre);
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, Chambre $chambre)
+    public function update(Request $request, string $id): RedirectResponse
     {
-        //
+        $chambre = Chambre::find($id);
+        $input = $request->all();
+        $chambre->update($input);
+        return redirect('chambre')->with('flash_message', 'Chambre modifié');  
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Chambre $chambre)
+    public function destroy(string $id): RedirectResponse
     {
-        //
+        Chambre::destroy($id);
+        return redirect('chambre')->with('flash_message', 'Chambre supprimé'); 
     }
 }

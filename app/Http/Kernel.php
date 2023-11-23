@@ -23,6 +23,11 @@ class Kernel extends HttpKernel
         \Illuminate\Foundation\Http\Middleware\ConvertEmptyStringsToNull::class,
     ];
 
+
+    protected $routeMiddleware = [
+    // ...
+    'checkRoomCount' => \App\Http\Middleware\CheckRoomCount::class,
+    ];
     /**
      * The application's route middleware groups.
      *
@@ -31,6 +36,7 @@ class Kernel extends HttpKernel
     protected $middlewareGroups = [
         'web' => [
             \App\Http\Middleware\EncryptCookies::class,
+            // \App\Http\Middleware\CheckRoomCount::class,
             \Illuminate\Cookie\Middleware\AddQueuedCookiesToResponse::class,
             \Illuminate\Session\Middleware\StartSession::class,
             \Illuminate\View\Middleware\ShareErrorsFromSession::class,
@@ -44,6 +50,8 @@ class Kernel extends HttpKernel
             \Illuminate\Routing\Middleware\SubstituteBindings::class,
         ],
     ];
+
+    
 
     /**
      * The application's middleware aliases.
